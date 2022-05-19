@@ -44,11 +44,13 @@ class AssignmentViewListAdapter: ListAdapter<String, AssignmentImageViewHolder>(
 }
 
 class AssignmentImageViewHolder(
-    private val binding: LayoutAssignmentViewListItemBinding
+    private val binding: LayoutAssignmentViewListItemBinding,
+    private val listener: LoadImageListener = LoadImageListener()
 ) : RecyclerView.ViewHolder(binding.root) {
 
     fun bind(imageUrl: String) {
         binding.imageUrl = imageUrl
+        binding.listener = listener
     }
 
 }

@@ -8,6 +8,10 @@
         <variable
             name="imageUrl"
             type="java.lang.String" />
+
+        <variable
+            name="listener"
+            type="com.example.customimagelist.views.assignmentview.LoadImageListener" />
     </data>
 
     <FrameLayout
@@ -21,7 +25,8 @@
             android:adjustViewBounds="true"
             android:contentDescription="@string/image_content_description"
             android:scaleType="fitXY"
-            app:imageUrl="@{imageUrl}" />
+            app:imageUrl="@{imageUrl}"
+            app:listener="@{listener}" />
 
     </FrameLayout>
 
