@@ -9,6 +9,15 @@ class DemoViewModel(
     dataProvider: DemoDataProvider = DemoDataProvider()
 ) : ViewModel() {
 
-    val images: MutableLiveData<List<String>> = MutableLiveData(dataProvider.imageUrlList)
+    val images: MutableLiveData<List<String>> =
+        savedStateHandle.getLiveData(STATE_KEY_IMAGES, dataProvider.imageUrlList)
+
+    fun onShuffleClick() {
+        images.value?.let { images.value = it.shuffled() }
+    }
+
+    companion object {
+        private const val STATE_KEY_IMAGES = "DemoViewModel_keyImages"
+    }
 
 }

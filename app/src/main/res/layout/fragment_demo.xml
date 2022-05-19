@@ -9,12 +9,34 @@
             type="com.example.customimagelist.demo.DemoViewModel" />
     </data>
 
-    <com.example.customimagelist.views.assignmentview.AssignmentView
-        android:id="@+id/assignmentView"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:imageUrlList="@{viewModel.images}" />
+        android:layout_height="match_parent">
+
+        <com.example.customimagelist.views.assignmentview.AssignmentView
+            android:id="@+id/assignmentView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            app:imageUrlList="@{viewModel.images}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/default_margin"
+            android:background="@color/purple_200"
+            android:onClick="@{() -> viewModel.onShuffleClick()}"
+            android:text="@string/button_label_shuffle"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

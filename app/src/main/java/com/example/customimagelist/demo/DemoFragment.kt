@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModel
 import androidx.savedstate.SavedStateRegistryOwner
 import com.example.customimagelist.R
 import com.example.customimagelist.databinding.FragmentDemoBinding
+import com.example.customimagelist.util.ScrollToFistLinearLayoutManager
 
 class DemoFragment : Fragment() {
 
@@ -24,6 +25,11 @@ class DemoFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         setUpBinding(container = container)
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.assignmentView.layoutManager = ScrollToFistLinearLayoutManager(context = requireContext())
     }
 
     override fun onDestroyView() {
