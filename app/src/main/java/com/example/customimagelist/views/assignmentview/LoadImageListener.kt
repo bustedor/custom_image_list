@@ -6,8 +6,11 @@ import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
+import com.example.customimagelist.network.LoadTimeRepository
 
-class LoadImageListener : RequestListener<Drawable> {
+class LoadImageListener(
+    private val repository: LoadTimeRepository = LoadTimeRepository()
+) : RequestListener<Drawable> {
 
     // binding adapter sets this field just before
     // loading the image to get more accurate load time
@@ -37,6 +40,7 @@ class LoadImageListener : RequestListener<Drawable> {
         if (timeBeforeLoad != INVALID_TIME) {
             val loadTime = System.currentTimeMillis() - timeBeforeLoad
             Log.d(TAG, "Loading image took $loadTime milliseconds.")
+            repository.sendLoadTime(loadTime)
         }
         return false
     }
