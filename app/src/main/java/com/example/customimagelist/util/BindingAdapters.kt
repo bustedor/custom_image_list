@@ -1,5 +1,6 @@
 package com.example.customimagelist.util
 
+import android.graphics.Bitmap
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
@@ -29,4 +30,9 @@ fun bindImageUrlList(view: AssignmentView, list: List<String>?) {
         return
     }
     view.setImageUrlList(list)
+}
+
+@BindingAdapter("imageFromBitmap")
+fun bindImageFromBitmap(imageView: ImageView, bitmap: Bitmap?) {
+    bitmap?.let { imageView.setImageBitmap(it) }
 }
