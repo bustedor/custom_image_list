@@ -38,6 +38,7 @@ class DemoFragment : Fragment() {
     }
 
     private fun tearDownBinding() {
+        binding.assignmentView.adapter = null
         _binding = null
     }
 

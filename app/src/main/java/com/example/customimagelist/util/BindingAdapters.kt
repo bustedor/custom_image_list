@@ -5,6 +5,7 @@ import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.customimagelist.R
+import com.example.customimagelist.views.assignmentview.AssignmentView
 import com.example.customimagelist.views.assignmentview.LoadImageListener
 
 @BindingAdapter("imageUrl", "listener", requireAll = true)
@@ -20,4 +21,12 @@ fun bindImageFromUrl(view: ImageView, imageUrl: String?, loadImageListener: Load
         .diskCacheStrategy(DiskCacheStrategy.DATA)
         .listener(loadImageListener)
         .into(view)
+}
+
+@BindingAdapter("imageUrlList")
+fun bindImageUrlList(view: AssignmentView, list: List<String>?) {
+    if (list.isNullOrEmpty()) {
+        return
+    }
+    view.setImageUrlList(list)
 }
